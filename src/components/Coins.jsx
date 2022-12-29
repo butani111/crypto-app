@@ -6,6 +6,8 @@ import {
   Heading,
   HStack,
   Image,
+  Radio,
+  RadioGroup,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -57,7 +59,15 @@ const Coins = () => {
         <Loader />
       ) : (
         <>
-          <HStack wrap={"wrap"}>
+          <RadioGroup value={currency} onChange={setCurrency} p={"8"}>
+            <HStack spacing={"4"}>
+              <Radio value="inr">INR</Radio>
+              <Radio value="usd">USD</Radio>
+              <Radio value="eur">EUR</Radio>
+            </HStack>
+          </RadioGroup>
+
+          <HStack wrap={"wrap"} justifyContent="space-evenly">
             {coins.map((i) => (
               <CoinCard
                 id={i.id}
